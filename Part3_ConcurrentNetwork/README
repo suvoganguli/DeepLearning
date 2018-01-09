@@ -1,0 +1,9 @@
+cd .ssh
+ssh -i YourKeyName.pem ubuntu@X.X.X.X
+jupyter notebook --generate-config
+sed -ie "s/#c.NotebookApp.ip = 'localhost'/#c.NotebookApp.ip = '*'/g" ~/.jupyter/jupyter_notebook_config.p
+#git clone https://github.com/udacity/aind2-cnn.git
+#cd aind2-cnn
+#sudo python3 -m pip install -r requirements/requirements-gpu.txt
+jupyter notebook --ip=0.0.0.0 --no-browser
+X.X.X.X:8888/?token=... 
