@@ -1,0 +1,7 @@
+CNN Books
+1. http://neuralnetworksanddeeplearning.com/
+2. http://www.deeplearningbook.org/
+
+CNN Links
+
+1. http://cs231n.github.io
