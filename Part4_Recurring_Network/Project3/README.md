@@ -1,6 +1,6 @@
-##README.md
+## README.md
 
-I am getting the following error for ###Build the Graph:
+I am getting the following error for ### Build the Graph:
 
 ValueError                                Traceback (most recent call last)
 <ipython-input-436-a2d9a7091ca5> in <module>()
