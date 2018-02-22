@@ -1,6 +1,6 @@
 README.md
 
- am getting the following error:
+I am getting the following error:
 
 AssertionError: Batches returned wrong contents. For example, input sequence 1 in the first batch was [640 641 642 643 644]
 
