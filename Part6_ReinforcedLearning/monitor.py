@@ -54,11 +54,11 @@ def interact(env, agent, num_episodes=200, window=100): #20000
             if avg_reward > best_avg_reward:
                 best_avg_reward = avg_reward
         # monitor progress
-        print("\rEpisode {}/{} || Best average reward {}".format(i_episode, num_episodes, best_avg_reward),)
+        print("\rEpisode {}/{} || Best average reward {}".format(i_episode, num_episodes, best_avg_reward),end="")
         sys.stdout.flush()
         # check if task is solved (according to OpenAI Gym)
         if best_avg_reward >= 9.7:
-            print('\nEnvironment solved in {} episodes.'.format(i_episode),)
+            print('\nEnvironment solved in {} episodes.'.format(i_episode),end="")
             break
         if i_episode == num_episodes: print('\n')
     return avg_rewards, best_avg_reward
