@@ -17,14 +17,13 @@ class Agent:
         self.i_episode = 1
         self.env = env
         self.alpha = 0.1
-        self.epsilon = 0.1
-
 
     def epsilon_greedy_probs(self, Q_s):
         """ obtains the action probabilities corresponding to epsilon-greedy policy """
 
-        policy_s = np.ones(self.nA) * self.epsilon / self.nA
-        policy_s[np.argmax(Q_s)] = 1 - self.epsilon + (self.epsilon / self.nA)
+        epsilon = 1/self.i_episode
+        policy_s = np.ones(self.nA) * epsilon / self.nA
+        policy_s[np.argmax(Q_s)] = 1 - epsilon + (epsilon / self.nA)
         return policy_s
 
 
@@ -63,3 +62,4 @@ class Agent:
         """
 
         self.Q[state][action] += self.alpha * (reward + np.max(self.Q[next_state]) - self.Q[state][action] )
+        self.i_episode += 1
