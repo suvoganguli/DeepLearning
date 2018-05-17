@@ -16,19 +16,15 @@ class Agent:
         self.Q = defaultdict(lambda: np.zeros(self.nA))
         self.i_episode = 1
         self.env = env
+        self.alpha = 0.8
+        self.epsilon = 0.1
 
-        #print(env.nA)
 
-
-    def epsilon_greedy_probs(self, env, Q_s, i_episode, eps=None):
+    def epsilon_greedy_probs(self, Q_s):
         """ obtains the action probabilities corresponding to epsilon-greedy policy """
 
-
-        epsilon = 1.0 / i_episode
-        if eps is not None:
-            epsilon = eps
-        policy_s = np.ones(self.nA) * epsilon / self.nA
-        policy_s[np.argmax(Q_s)] = 1 - epsilon + (epsilon / self.nA)
+        policy_s = np.ones(self.nA) * self.epsilon / self.nA
+        policy_s[np.argmax(Q_s)] = 1 - self.epsilon + (self.epsilon / self.nA)
         return policy_s
 
 
@@ -44,9 +40,14 @@ class Agent:
         - action: an integer, compatible with the task's action space
         """
 
-        policy_s = self.epsilon_greedy_probs(env, 1, self.i_episode)
+        #return np.random.choice(self.nA)
 
-        return np.random.choice(self.nA)
+
+        Q_s = self.Q[state]
+        policy_s = self.epsilon_greedy_probs(Q_s)
+
+        action = np.random.choice(self.nA, p=policy_s)
+        return action
 
 
     def step(self, state, action, reward, next_state, done):
@@ -60,4 +61,5 @@ class Agent:
         - next_state: the current state of the environment
         - done: whether the episode is complete (True or False)
         """
-        self.Q[state][action] += 1
+
+        self.Q[state][action] += self.alpha * (reward + np.max(self.Q[next_state]) - self.Q[state][action] )
