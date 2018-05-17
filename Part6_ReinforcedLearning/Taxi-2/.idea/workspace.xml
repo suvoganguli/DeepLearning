@@ -52,8 +52,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/agent.py" />
         <option value="$PROJECT_DIR$/monitor.py" />
+        <option value="$PROJECT_DIR$/agent.py" />
       </list>
     </option>
   </component>

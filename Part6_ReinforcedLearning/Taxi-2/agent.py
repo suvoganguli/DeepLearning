@@ -16,7 +16,7 @@ class Agent:
         self.Q = defaultdict(lambda: np.zeros(self.nA))
         self.i_episode = 1
         self.env = env
-        self.alpha = 0.8
+        self.alpha = 0.1
         self.epsilon = 0.1
 
 
