@@ -83,7 +83,8 @@ class Quadcop_Policy():
             policy_s = self.epsilon_greedy_probs(Q[nS], i_episode)
 
             # pick action
-            action = np.random.choice(np.arange(nA), p=policy_s)
+            #action = np.random.choice(np.arange(nA), p=policy_s)
+            action = np.random.uniform(self.action_low, self.action_high) * policy_s
 
             # --------------------------------------------------------
             # Getting stuck here. "action" is of size 1 (between 0 and 3)
