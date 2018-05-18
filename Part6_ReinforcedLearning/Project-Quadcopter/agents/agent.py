@@ -23,22 +23,15 @@ class Quadcop_Policy():
         state = self.task.reset()
         return state
 
-    def step(self, reward, done):
-        # Save experience / reward
-        self.total_reward += reward
-        self.count += 1
+    def step(self, action):
+        next_state, reward, done = self.task.step(action)
+        return next_state, reward, done
 
-        # Learn, if at end of episode
-        if done:
-            self.learn()
 
     def act(self, state):
         # Choose action based on given state and policy
         action = np.dot(state, self.w)  # simple linear policy
         return action
-
-    def learn(self): # q-learning
-        None
 
 
     def update_Q(self, Qsa, Qsa_next, reward, alpha, gamma):
@@ -58,7 +51,7 @@ class Quadcop_Policy():
         return policy_s
 
 
-    def sarsa(self, agent, num_episodes, alpha, gamma=1.0):
+    def sarsa(self, num_episodes, alpha, gamma=1.0):
 
         # initialize action-value function (empty dictionary of arrays)
 
@@ -70,44 +63,70 @@ class Quadcop_Policy():
         plot_every = 100
         tmp_scores = deque(maxlen=plot_every)
         scores = deque(maxlen=num_episodes)
+
         # loop over episodes
         for i_episode in range(1, num_episodes + 1):
             # monitor progress
             if i_episode % 100 == 0:
                 print("\rEpisode {}/{}".format(i_episode, num_episodes), end="")
                 sys.stdout.flush()
-                # initialize score
+
+            # initialize score
             score = 0
+
             # begin an episode, observe S
-            state = self.reset()
+            state = self.reset_episode()
+
+            nS = self.state_size
+
             # get epsilon-greedy action probabilities
-            policy_s = self.epsilon_greedy_probs(Q[state], i_episode)
-            # pick action A
+            policy_s = self.epsilon_greedy_probs(Q[nS], i_episode)
+
+            # pick action
             action = np.random.choice(np.arange(nA), p=policy_s)
+
+            # --------------------------------------------------------
+            # Getting stuck here. "action" is of size 1 (between 0 and 3)
+            # But what I need is a 4x1 vector ranging between
+            # task.action_low and task.action_high to run:
+            # "next_state, reward, done = self.task.step(action)"
+            # --------------------------------------------------------
+
             # limit number of time steps per episode
             for t_step in np.arange(300):
+
                 # take action A, observe R, S'
-                next_state, reward, done, info = self.step(action)
+                next_state, reward, done = self.task.step(action)
+                #next_state, reward, done = self.step(action)
+
                 # add reward to score
                 score += reward
+
                 if not done:
                     # get epsilon-greedy action probabilities
                     policy_s = self.epsilon_greedy_probs(Q[next_state], i_episode)
+
                     # pick next action A'
                     next_action = np.random.choice(np.arange(nA), p=policy_s)
+
                     # update TD estimate of Q
                     Q[state][action] = self.update_Q(Q[state][action], Q[next_state][next_action],
                                                 reward, alpha, gamma)
+
                     # S <- S'
                     state = next_state
+
                     # A <- A'
                     action = next_action
+
                 if done:
                     # update TD estimate of Q
                     Q[state][action] = self.update_Q(Q[state][action], 0, reward, alpha, gamma)
+
                     # append score
                     tmp_scores.append(score)
                     break
+
             if (i_episode % plot_every == 0):
                 scores.append(np.mean(tmp_scores))
         # plot performance
