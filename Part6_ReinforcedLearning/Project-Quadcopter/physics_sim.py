@@ -80,6 +80,7 @@ class PhysicsSim():
 
         linear_forces = np.matmul(body_to_earth_frame(*list(self.pose[3:])), body_forces)
         linear_forces += gravity_force
+
         return linear_forces
 
     def get_moments(self, thrusts):

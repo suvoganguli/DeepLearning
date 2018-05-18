@@ -21,7 +21,7 @@ class Agent:
     def epsilon_greedy_probs(self, Q_s):
         """ obtains the action probabilities corresponding to epsilon-greedy policy """
 
-        epsilon = 1/self.i_episode
+        epsilon = 1.0/self.i_episode
         policy_s = np.ones(self.nA) * epsilon / self.nA
         policy_s[np.argmax(Q_s)] = 1 - epsilon + (epsilon / self.nA)
         return policy_s
