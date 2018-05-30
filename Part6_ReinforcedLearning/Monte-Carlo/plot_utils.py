@@ -24,6 +24,8 @@ def plot_blackjack_values(V):
         ax.set_ylabel('Dealer\'s Showing Card')
         ax.set_zlabel('State Value')
         ax.view_init(ax.elev, -120)
+        #ax.view_init(0, -90)
+        
 
     fig = plt.figure(figsize=(20, 20))
     ax = fig.add_subplot(211, projection='3d')

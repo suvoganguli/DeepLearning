@@ -84,7 +84,9 @@ class Quadcop_Policy():
 
             # pick action
             #action = np.random.choice(np.arange(nA), p=policy_s)
-            action = np.random.uniform(self.action_low, self.action_high) * policy_s
+            action_all = np.random.uniform(self.action_low, self.action_high) * policy_s
+            action = np.round(action_all[0])
+            action = [action, action, action, action]
 
             # --------------------------------------------------------
             # Getting stuck here. "action" is of size 1 (between 0 and 3)
@@ -104,11 +106,20 @@ class Quadcop_Policy():
                 score += reward
 
                 if not done:
+
+                    # Convert to tuple to avoid errors
+                    state = tuple(state)
+                    next_state = tuple(next_state)
+
                     # get epsilon-greedy action probabilities
                     policy_s = self.epsilon_greedy_probs(Q[next_state], i_episode)
 
                     # pick next action A'
-                    next_action = np.random.choice(np.arange(nA), p=policy_s)
+                    next_action = np.random.uniform(self.action_low, self.action_high) * policy_s
+
+                    # Convert to tuple to avoid errors
+                    action = tuple(action)
+                    next_action = tuple(next_action)
 
                     # update TD estimate of Q
                     Q[state][action] = self.update_Q(Q[state][action], Q[next_state][next_action],
