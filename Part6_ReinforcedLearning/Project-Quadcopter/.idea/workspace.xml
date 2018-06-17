@@ -12,60 +12,11 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="Q-learning-cart.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/attempt2/Q-learning-cart.py">
+        <entry file="file://$PROJECT_DIR$/Q-Learning/Q-learning-cart.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3327">
-              <caret line="7" column="11" lean-forward="true" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+            <state>
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="agent.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/attempt2/agents/agent.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="46" column="12" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="12" />
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="task.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/attempt2/task.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-379">
-              <caret line="3" column="13" lean-forward="true" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="physics_sim.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/attempt2/physics_sim.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="87">
-              <caret line="108" column="42" lean-forward="true" selection-start-line="108" selection-start-column="42" selection-end-line="108" selection-end-column="42" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="policy_search.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/attempt2/agents/policy_search.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="103">
-              <caret line="15" column="73" selection-start-line="15" selection-start-column="73" selection-end-line="15" selection-end-column="73" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -116,8 +67,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="26" />
     <option name="y" value="44" />
-    <option name="width" value="1178" />
-    <option name="height" value="671" />
+    <option name="width" value="1105" />
+    <option name="height" value="694" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -131,6 +82,11 @@
             <path>
               <item name="Project-Quadcopter" type="b2602c69:ProjectViewProjectNode" />
               <item name="Project-Quadcopter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Project-Quadcopter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project-Quadcopter" type="462c0819:PsiDirectoryNode" />
+              <item name="Q-Learning" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -161,7 +117,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.main_Q-Learning">
+  <component name="RunManager" selected="Python.Q-learning-cart">
     <configuration name="Q-learning-cart" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Project-Quadcopter" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -170,11 +126,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/attempt2" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Q-Learning" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/attempt2/Q-learning-cart.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Q-Learning/Q-learning-cart.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -261,8 +217,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.main_Q-Learning" />
         <item itemvalue="Python.Q-learning-cart" />
+        <item itemvalue="Python.main_Q-Learning" />
         <item itemvalue="Python.actor-critic-pendulum" />
         <item itemvalue="Python.frozen_lake_nn" />
       </list>
@@ -282,9 +238,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="26" y="44" width="1178" height="671" extended-state="0" />
+    <frame x="26" y="44" width="1040" height="671" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27504244" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31153846" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.3294702" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.34673366" />
@@ -332,7 +289,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/agents/main.py" />
     <entry file="file://$PROJECT_DIR$/agents/agent.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2322">
@@ -699,16 +655,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/attempt2/task.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-379">
-          <caret line="3" column="13" lean-forward="true" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/attempt2/physics_sim.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="87">
@@ -733,6 +679,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3327">
           <caret line="7" column="11" lean-forward="true" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/attempt2/task.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-379">
+          <caret line="3" column="13" lean-forward="true" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Q-Learning/Q-learning-cart.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
