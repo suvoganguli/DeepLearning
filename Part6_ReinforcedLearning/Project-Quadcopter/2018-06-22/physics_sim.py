@@ -108,7 +108,6 @@ class PhysicsSim():
         '''calculates net thrust (thrust - drag) based on velocity
         of propeller and incoming power'''
         thrusts = []
-        print(rotor_speeds)
         for prop_number in range(4):
             V = self.prop_wind_speed[prop_number]
             D = self.propeller_size
