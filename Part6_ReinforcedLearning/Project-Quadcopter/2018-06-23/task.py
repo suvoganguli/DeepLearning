@@ -23,27 +23,12 @@ class Task():
         self.action_high = 900
         self.action_size = 4
 
-        self.init_pose = init_pose
-
         # Goal
         self.target_pos = target_pos if target_pos is not None else np.array([0., 0., 10.]) 
 
     def get_reward(self):
         """Uses current pose of sim to return reward."""
-        #reward = 1.-.3*(abs(self.sim.pose[:3] - self.target_pos)).sum()
-
-        Zdist = abs(self.target_pos[2] - self.init_pose[2])
-
-        # We want minimum change in direction of x and y and making z close to the target z
-        # so we punish for moving in directions x and y and give rewards to direction in z
-        punish_x = abs(self.sim.pose[0] - self.target_pos[0])
-        punish_y = abs(self.sim.pose[1] - self.target_pos[1])
-        reward_z = 1.0 - (self.target_pos[2] - self.sim.pose[2]) / Zdist
-        punish_rot1 = abs(self.sim.pose[3])
-        punish_rot2 = abs(self.sim.pose[4])
-        punish_rot3 = abs(self.sim.pose[5])
-        reward = reward_z - 0.1 * (punish_x + punish_y) - 0.1 * (punish_rot1 + punish_rot2 + punish_rot3)
-
+        reward = 1.-.3*(abs(self.sim.pose[:3] - self.target_pos)).sum()
         return reward
 
     def step(self, rotor_speeds):

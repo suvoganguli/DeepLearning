@@ -24,8 +24,6 @@ def train(sess, ddpg):
     batch_size = ddpg.batch_size
     replay_buffer = agent.ReplayBuffer(buffer_size, batch_size)
 
-    reward_all = np.array([], dtype=float)
-
     for i in range(max_episodes):
 
         # Reset
@@ -70,13 +68,10 @@ def train(sess, ddpg):
                 #writer.add_summary(summary_str, i)
                 #writer.flush()
 
-                print('| Reward: {:d} | Episode: {:d} | Qmax: {:.4f} | Episode Length: {:d}'.format(int(ep_reward), \
+                print('| Reward: {:d} | Episode: {:d} | Qmax: {:.4f} | Eposide Length: {:d}'.format(int(ep_reward), \
                         i, (ep_ave_max_q / float(j+1)), j ))
-
-                reward_all = np.concatenate([reward_all, [ep_reward]])
                 break
 
-    return reward_all
 
 # ===========================
 #   Tensorflow Summary Ops
@@ -86,7 +81,7 @@ def build_summaries():
     episode_reward = tf.Variable(0.)
     tf.summary.scalar("Reward", episode_reward)
     episode_ave_max_q = tf.Variable(0.)
-    tf.summary.scalar("Qmax_Value", episode_ave_max_q)
+    tf.summary.scalar("Qmax Value", episode_ave_max_q)
 
     summary_vars = [episode_reward, episode_ave_max_q]
     summary_ops = tf.summary.merge_all()
@@ -95,27 +90,18 @@ def build_summaries():
 
 
 def main():
+    with tf.Session() as sess:
 
-# ===========================
-# Task: take-off and hover
-# ===========================
+        # Task: take-off and hover
+        init_pose = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        init_velocities = [0.0, 0.0, 0.0]
+        init_angle_velocities = [0.0, 0.0, 0.0]
+        run_time = 5
+        target_pos = [0.0, 0.0, 10.0]
 
-    tf.reset_default_graph()
-    with tf.Graph().as_default():
-        tf.set_random_seed(1234)
+        ddpg = agent.DDPG(Task(init_pose, init_velocities, init_angle_velocities, run_time, target_pos))
 
-        with tf.Session() as sess:
-
-
-            init_pose = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-            init_velocities = [0.0, 0.0, 0.0]
-            init_angle_velocities = [0.0, 0.0, 0.0]
-            run_time = 5
-            target_pos = [0.0, 0.0, 10.0]
-
-            ddpg = agent.DDPG(Task(init_pose, init_velocities, init_angle_velocities, run_time, target_pos))
-
-            reward_all = train(sess, ddpg)
+        train(sess, ddpg)
 
 
 if __name__ == '__main__':
