@@ -137,23 +137,20 @@ def build_summaries():
 
 def main():
 
-    tf.reset_default_graph()
+    np.random.seed(1234)
 
-    with tf.Graph().as_default():
-        tf.set_random_seed(1234)
+    with tf.Session() as sess:
 
-        with tf.Session() as sess:
+        # Task: take-off and hover
+        init_pose = [0.0, 0.0, 100.0, 0.0, 0.0, 0.0]
+        init_velocities = [0.0, 0.0, 0.0]
+        init_angle_velocities = [0.0, 0.0, 0.0]
+        run_time = 20
+        target_pos = [0.0, 0.0, 100.0]
 
-            # Task: take-off and hover
-            init_pose = [0.0, 0.0, 100.0, 0.0, 0.0, 0.0]
-            init_velocities = [0.0, 0.0, 0.0]
-            init_angle_velocities = [0.0, 0.0, 0.0]
-            run_time = 20
-            target_pos = [0.0, 0.0, 100.0]
+        ddpg = agent.DDPG(Task(init_pose, init_velocities, init_angle_velocities, run_time, target_pos))
 
-            ddpg = agent.DDPG(Task(init_pose, init_velocities, init_angle_velocities, run_time, target_pos))
-
-            train(sess, ddpg)
+        train(sess, ddpg)
 
 
 if __name__ == '__main__':
