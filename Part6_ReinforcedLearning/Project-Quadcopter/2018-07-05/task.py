@@ -38,7 +38,7 @@ class Task():
         punish_rot3 = abs(self.sim.pose[5])
         reward_vz = self.sim.v[2]
         reward = reward_z - 0.1 * (punish_x + punish_y) - 0.1 * (punish_rot1 + punish_rot2 + punish_rot3) + \
-            0.5 * reward_vz
+            0.1 * reward_vz
 
         return reward
 

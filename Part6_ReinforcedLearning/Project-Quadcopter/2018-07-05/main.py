@@ -13,7 +13,7 @@ def train(sess, ddpg, max_episodes):
 
     summary_dir = './results'
     #max_episodes = 2
-    max_episode_len = 2000
+    max_episode_len = 1000
 
     # Set up summary Ops
     summary_ops, summary_vars = build_summaries()
@@ -164,7 +164,7 @@ def main(max_episodes):
         target_pos = [0.0, 0.0, 10.0]
 
         np.random.seed(1234)
-        random.seed(2345)
+        tf.set_random_seed(2345)
 
         ddpg = agent.DDPG(Task(init_pose, init_velocities, init_angle_velocities, run_time, target_pos))
 
@@ -177,7 +177,7 @@ def main(max_episodes):
 
 if __name__ == '__main__':
 
-    max_episodes = 1000
+    max_episodes = 10
 
     reward_all = main(max_episodes)
     avg_reward = reward_all/max_episodes
