@@ -177,7 +177,7 @@ def main(max_episodes):
 
 if __name__ == '__main__':
 
-    max_episodes = 10
+    max_episodes = 500
 
     reward_all = main(max_episodes)
     avg_reward = reward_all/max_episodes

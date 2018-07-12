@@ -68,7 +68,7 @@ class Actor:
         # Add hidden layers
         net = layers.Dense(units=400, activation='relu')(states)
         net = layers.Dense(units=300, activation='relu')(net)
-        #net = layers.Dense(units=32, activation='relu')(net)
+        net = layers.Dense(units=100, activation='tanh')(net)
 
         # Try different layer sizes, activations, add batch normalization, regularizers, etc.
 
@@ -151,7 +151,7 @@ class Critic:
 
             # Combine state and action pathways
             net = layers.Add()([net_states, net_actions])
-            net = layers.Activation(activation='relu')(net)
+            net = layers.Activation(activation='tanh')(net)
 
 
         # Add more layers to the combined network if needed
@@ -200,7 +200,7 @@ class DDPG():
         # Noise process
         self.exploration_mu = 0
         self.exploration_theta = 0.1
-        self.exploration_sigma = 1.0
+        self.exploration_sigma = 1.0*10
         self.noise = OUNoise(self.action_size, self.exploration_mu, self.exploration_theta, self.exploration_sigma)
 
         # Replay memory
